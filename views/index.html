@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<meta name="description" content="">
+    <meta name="author" content="">
+
+
+	<title>MAKKI MASJID SIGNAGE</title>
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+ <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script id="myJson" src="http://makkimasjid.com/pdf/appdata/november.txt"  type="application/json"></script>
+ <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
+
+
+	<script type="text/javascript">;
+function updateClock() {
+
+var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+var now = new Date();
+var day = now.getDay();
+var date = now.getDate();
+var month = now.getMonth();
+var year = now.getFullYear();
+var hour = now.getHours();
+var minute = now.getMinutes();
+var second = now.getSeconds();
+var AMorPM = "AM";
+
+if(hour>=12) AMorPM = "PM";
+if(hour>12) hour -= 12;
+
+if(date<10) date = "0" + date;
+if(hour<10) hour =  hour;
+if(minute<10) minute = "0" + minute;
+if(second<10) second = "0" + second;
+
+var firstRow = "&nbsp;" + hour + "&nbsp;" + ":" + "&nbsp;" + minute + "&nbsp;" + ":" + "&nbsp;" + second + "&nbsp;" + AMorPM + '';
+document.getElementById("row1").innerHTML = firstRow;
+var secondRow = "&nbsp;"+days[day] +"&nbsp;"+months[month] + "&nbsp;" + date+ "&nbsp;" + year+"&nbsp;&nbsp;-&nbsp;&nbsp;Dhul Qada 22 1437";
+document.getElementById("row2").innerHTML = secondRow;
+//var thirdRow = "&nbsp;"+months[month] + "&nbsp;" + date+ "&nbsp;" + year;
+//document.getElementById("row3").innerHTML = thirdRow;
+
+setTimeout("updateClock()",1000);
+}
+</script>
+	<style>
+#header {
+
+}
+#body {
+    background-color:#99ff66
+    color:black;
+    text-align:center;
+    padding:0px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:100px;
+    padding:5px;
+}
+#clock {
+    width:70%;
+
+	float:center;
+    padding:0px;
+}
+#prayerTime {
+    width:relative;
+	float:left;
+	clear:both;
+    padding:0px;
+}
+#section {
+    width:absolute;
+    float:right;
+    padding:0px;
+}
+#footer {
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    margin-bottom:20px;
+    height: auto;
+
+}
+#ifram {
+ overflow:hidden;
+ overflow-x:hidden;
+ overflow-y:hidden;
+ width:1000px;
+ height:100px;
+}
+#canvas {
+		    width: 100%;
+		    height: auto;
+		}
+</style>
+
+
+  </head>
+
+
+
+  <body>
+<div style="font-size: 4.5em;color:white;font-weight:bold;background-color:#339966">
+<center>
+WELCOME TO MAKKI MASJID
+</center>
+</div>
+
+</div class="container-fluid">
+<div class="col-sm-3 col-lg-3">
+	<div class="table-responsive" style="float:center;padding:0px;font-size: 3em;width:100%;height:830px;">
+
+<table id="myTable" class="table">
+  <tr bgcolor="#339966" style="color:white;font-face:bold;">
+    <td>SALAH</td>
+    <td>IQAMAH</td>
+  </tr>
+
+</table>
+
+</div>
+  <script type="text/javascript">
+function myFunction() {
+
+  //var x = JSON.parse($('#myJson'));
+        //console.log(myJson); //Foo
+
+var now = new Date();
+		var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+		var month = now.getMonth();
+		var date = now.getDate();
+		if(date<10) date = "0"+date;
+		var month = months[month]
+		var today = month+""+date;
+
+
+var body={
+"August01":{"Islamicday":"Shawwal 27","Islamicyear":1437,"Aug":1,"Day":"Mon","Fajr":"3:49","Fajr Iqamah":"5:15","Sunrise":"5:44","Zuhr":"1:01","Zuhr Iqamah":"1:30","Asr":"6:00","Asr Iqamah":"6:30","Maghrib":"8:08","Ishaa":"9:41","Ishaa Iqamah":"10:00"},
+"August02":{"Islamicday":"Shawwal 28","Islamicyear":1437,"Aug":2,"Day":"Tue","Fajr":"3:51","Fajr Iqamah":"5:15","Sunrise":"5:45","Zuhr":"1:01","Zuhr Iqamah":"1:30","Asr":"5:59","Asr Iqamah":"6:30","Maghrib":"8:07","Ishaa":"9:40","Ishaa Iqamah":"10:00"},
+"August03":{"Islamicday":"Shawwal 29","Islamicyear":1437,"Aug":3,"Day":"Wed","Fajr":"3:53","Fajr Iqamah":"5:15","Sunrise":"5:46","Zuhr":"1:01","Zuhr Iqamah":"1:30","Asr":"5:58","Asr Iqamah":"6:30","Maghrib":"8:06","Ishaa":"9:38","Ishaa Iqamah":"10:00"},
+"August04":{"Islamicday":"Dhul Qada 1","Islamicyear":1437,"Aug":4,"Day":"Thu","Fajr":"3:54","Fajr Iqamah":"5:15","Sunrise":"5:47","Zuhr":"1:01","Zuhr Iqamah":"1:30","Asr":"5:58","Asr Iqamah":"6:30","Maghrib":"8:05","Ishaa":"9:36","Ishaa Iqamah":"10:00"},
+"August05":{"Islamicday":"Dhul Qada 2","Islamicyear":1437,"Aug":5,"Day":"Fri","Fajr":"3:56","Fajr Iqamah":"5:15","Sunrise":"5:48","Zuhr":"1:01","Zuhr Iqamah":"1:30","Asr":"5:57","Asr Iqamah":"6:15","Maghrib":"8:04","Ishaa":"9:35","Ishaa Iqamah":"9:45"},
+"August06":{"Islamicday":"Dhul Qada 3","Islamicyear":1437,"Aug":6,"Day":"Sat","Fajr":"3:57","Fajr Iqamah":"5:15","Sunrise":"5:49","Zuhr":"1:01","Zuhr Iqamah":"1:30","Asr":"5:56","Asr Iqamah":"6:15","Maghrib":"8:02","Ishaa":"9:33","Ishaa Iqamah":"9:45"},
+"August07":{"Islamicday":"Dhul Qada 4","Islamicyear":1437,"Aug":7,"Day":"Sun","Fajr":"3:59","Fajr Iqamah":"5:15","Sunrise":"5:50","Zuhr":"1:01","Zuhr Iqamah":"1:30","Asr":"5:55","Asr Iqamah":"6:15","Maghrib":"8:01","Ishaa":"9:31","Ishaa Iqamah":"9:45"},
+"August08":{"Islamicday":"Dhul Qada 5","Islamicyear":1437,"Aug":8,"Day":"Mon","Fajr":"4:01","Fajr Iqamah":"5:15","Sunrise":"5:51","Zuhr":"1:01","Zuhr Iqamah":"1:30","Asr":"5:54","Asr Iqamah":"6:15","Maghrib":"8:00","Ishaa":"9:30","Ishaa Iqamah":"9:45"},
+"August09":{"Islamicday":"Dhul Qada 6","Islamicyear":1437,"Aug":9,"Day":"Tue","Fajr":"4:02","Fajr Iqamah":"5:15","Sunrise":"5:52","Zuhr":"1:00","Zuhr Iqamah":"1:30","Asr":"5:54","Asr Iqamah":"6:15","Maghrib":"7:58","Ishaa":"9:28","Ishaa Iqamah":"9:45"},
+"August10":{"Islamicday":"Dhul Qada 7","Islamicyear":1437,"Aug":10,"Day":"Wed","Fajr":"4:04","Fajr Iqamah":"5:15","Sunrise":"5:53","Zuhr":"1:00","Zuhr Iqamah":"1:30","Asr":"5:53","Asr Iqamah":"6:15","Maghrib":"7:57","Ishaa":"9:26","Ishaa Iqamah":"9:45"},
+"August11":{"Islamicday":"Dhul Qada 8","Islamicyear":1437,"Aug":11,"Day":"Thu","Fajr":"4:05","Fajr Iqamah":"5:15","Sunrise":"5:54","Zuhr":"1:00","Zuhr Iqamah":"1:30","Asr":"5:52","Asr Iqamah":"6:15","Maghrib":"7:56","Ishaa":"9:25","Ishaa Iqamah":"9:45"},
+"August12":{"Islamicday":"Dhul Qada 9","Islamicyear":1437,"Aug":12,"Day":"Fri","Fajr":"4:07","Fajr Iqamah":"5:15","Sunrise":"5:55","Zuhr":"1:00","Zuhr Iqamah":"1:30","Asr":"5:51","Asr Iqamah":"6:15","Maghrib":"7:54","Ishaa":"9:23","Ishaa Iqamah":"9:45"},
+"August13":{"Islamicday":"Dhul Qada 10","Islamicyear":1437,"Aug":13,"Day":"Sat","Fajr":"4:08","Fajr Iqamah":"5:15","Sunrise":"5:56","Zuhr":"1:00","Zuhr Iqamah":"1:30","Asr":"5:50","Asr Iqamah":"6:15","Maghrib":"7:53","Ishaa":"9:21","Ishaa Iqamah":"9:45"},
+"August14":{"Islamicday":"Dhul Qada 11","Islamicyear":1437,"Aug":14,"Day":"Sun","Fajr":"4:10","Fajr Iqamah":"5:15","Sunrise":"5:57","Zuhr":"1:00","Zuhr Iqamah":"1:30","Asr":"5:49","Asr Iqamah":"6:15","Maghrib":"7:52","Ishaa":"9:19","Ishaa Iqamah":"9:45"},
+"August15":{"Islamicday":"Dhul Qada 12","Islamicyear":1437,"Aug":15,"Day":"Mon","Fajr":"4:12","Fajr Iqamah":"5:15","Sunrise":"5:58","Zuhr":"12:59","Zuhr Iqamah":"1:30","Asr":"5:48","Asr Iqamah":"6:15","Maghrib":"7:50","Ishaa":"9:18","Ishaa Iqamah":"9:45"},
+"August16":{"Islamicday":"Dhul Qada 13","Islamicyear":1437,"Aug":16,"Day":"Tue","Fajr":"4:13","Fajr Iqamah":"5:15","Sunrise":"5:59","Zuhr":"12:59","Zuhr Iqamah":"1:30","Asr":"5:47","Asr Iqamah":"6:15","Maghrib":"7:49","Ishaa":"9:16","Ishaa Iqamah":"9:45"},
+"August17":{"Islamicday":"Dhul Qada 14","Islamicyear":1437,"Aug":17,"Day":"Wed","Fajr":"4:15","Fajr Iqamah":"5:15","Sunrise":"6:00","Zuhr":"12:59","Zuhr Iqamah":"1:30","Asr":"5:46","Asr Iqamah":"6:15","Maghrib":"7:47","Ishaa":"9:14","Ishaa Iqamah":"9:45"},
+"August18":{"Islamicday":"Dhul Qada 15","Islamicyear":1437,"Aug":18,"Day":"Thu","Fajr":"4:16","Fajr Iqamah":"5:15","Sunrise":"6:01","Zuhr":"12:59","Zuhr Iqamah":"1:30","Asr":"5:45","Asr Iqamah":"6:15","Maghrib":"7:46","Ishaa":"9:12","Ishaa Iqamah":"9:45"},
+"August19":{"Islamicday":"Dhul Qada 16","Islamicyear":1437,"Aug":19,"Day":"Fri","Fajr":"4:18","Fajr Iqamah":"5:30","Sunrise":"6:02","Zuhr":"12:58","Zuhr Iqamah":"1:30","Asr":"5:44","Asr Iqamah":"6:00","Maghrib":"7:44","Ishaa":"9:10","Ishaa Iqamah":"9:30"},
+"August20":{"Islamicday":"Dhul Qada 17","Islamicyear":1437,"Aug":20,"Day":"Sat","Fajr":"4:19","Fajr Iqamah":"5:30","Sunrise":"6:03","Zuhr":"12:58","Zuhr Iqamah":"1:30","Asr":"5:43","Asr Iqamah":"6:00","Maghrib":"7:43","Ishaa":"9:08","Ishaa Iqamah":"9:30"},
+"August21":{"Islamicday":"Dhul Qada 18","Islamicyear":1437,"Aug":21,"Day":"Sun","Fajr":"4:21","Fajr Iqamah":"5:30","Sunrise":"6:04","Zuhr":"12:58","Zuhr Iqamah":"1:30","Asr":"5:42","Asr Iqamah":"6:00","Maghrib":"7:41","Ishaa":"9:07","Ishaa Iqamah":"9:30"},
+"August22":{"Islamicday":"Dhul Qada 19","Islamicyear":1437,"Aug":22,"Day":"Mon","Fajr":"4:22","Fajr Iqamah":"5:30","Sunrise":"6:05","Zuhr":"12:58","Zuhr Iqamah":"1:30","Asr":"5:41","Asr Iqamah":"6:00","Maghrib":"7:40","Ishaa":"9:05","Ishaa Iqamah":"9:30"},
+"August23":{"Islamicday":"Dhul Qada 20","Islamicyear":1437,"Aug":23,"Day":"Tue","Fajr":"4:24","Fajr Iqamah":"5:30","Sunrise":"6:06","Zuhr":"12:57","Zuhr Iqamah":"1:30","Asr":"5:39","Asr Iqamah":"6:00","Maghrib":"7:38","Ishaa":"9:03","Ishaa Iqamah":"9:30"},
+"August24":{"Islamicday":"Dhul Qada 21","Islamicyear":1437,"Aug":24,"Day":"Wed","Fajr":"4:25","Fajr Iqamah":"5:30","Sunrise":"6:07","Zuhr":"12:57","Zuhr Iqamah":"1:30","Asr":"5:38","Asr Iqamah":"6:00","Maghrib":"7:36","Ishaa":"9:01","Ishaa Iqamah":"9:30"},
+"August25":{"Islamicday":"Dhul Qada 22","Islamicyear":1437,"Aug":25,"Day":"Thu","Fajr":"4:27","Fajr Iqamah":"5:30","Sunrise":"6:08","Zuhr":"12:57","Zuhr Iqamah":"1:30","Asr":"5:37","Asr Iqamah":"6:00","Maghrib":"7:35","Ishaa":"8:59","Ishaa Iqamah":"9:30"},
+"August26":{"Islamicday":"Dhul Qada 23","Islamicyear":1437,"Aug":26,"Day":"Fri","Fajr":"4:28","Fajr Iqamah":"5:30","Sunrise":"6:09","Zuhr":"12:57","Zuhr Iqamah":"1:30","Asr":"5:36","Asr Iqamah":"6:00","Maghrib":"7:33","Ishaa":"8:57","Ishaa Iqamah":"9:15"},
+"August27":{"Islamicday":"Dhul Qada 24","Islamicyear":1437,"Aug":27,"Day":"Sat","Fajr":"4:29","Fajr Iqamah":"5:30","Sunrise":"6:10","Zuhr":"12:56","Zuhr Iqamah":"1:30","Asr":"5:35","Asr Iqamah":"6:00","Maghrib":"7:32","Ishaa":"8:55","Ishaa Iqamah":"9:15"},
+"August28":{"Islamicday":"Dhul Qada 25","Islamicyear":1437,"Aug":28,"Day":"Sun","Fajr":"4:31","Fajr Iqamah":"5:30","Sunrise":"6:11","Zuhr":"12:56","Zuhr Iqamah":"1:30","Asr":"5:34","Asr Iqamah":"6:00","Maghrib":"7:30","Ishaa":"8:53","Ishaa Iqamah":"9:15"},
+"August29":{"Islamicday":"Dhul Qada 26","Islamicyear":1437,"Aug":29,"Day":"Mon","Fajr":"4:32","Fajr Iqamah":"5:30","Sunrise":"6:12","Zuhr":"12:56","Zuhr Iqamah":"1:30","Asr":"5:32","Asr Iqamah":"6:00","Maghrib":"7:28","Ishaa":"8:51","Ishaa Iqamah":"9:15"},
+"August30":{"Islamicday":"Dhul Qada 27","Islamicyear":1437,"Aug":30,"Day":"Tue","Fajr":"4:34","Fajr Iqamah":"5:30","Sunrise":"6:13","Zuhr":"12:55","Zuhr Iqamah":"1:30","Asr":"5:31","Asr Iqamah":"6:00","Maghrib":"7:27","Ishaa":"8:50","Ishaa Iqamah":"9:15"},
+"August31":{"Islamicday":"Dhul Qada 28","Islamicyear":1437,"Aug":31,"Day":"Wed","Fajr":"4:35","Fajr Iqamah":"5:30","Sunrise":"6:14","Zuhr":"12:55","Zuhr Iqamah":"1:30","Asr":"5:30","Asr Iqamah":"6:00","Maghrib":"7:25","Ishaa":"8:48","Ishaa Iqamah":"9:15"},
+"September01":{"Islamicday":"Dhul Qada 27","Islamicyear":1437,"Sept":1,"Day":"Thu","Fajr":"4:34","Fajr Iqamah":"5:30","Sunrise":"6:13","Zuhr":"12:55","Zuhr Iqamah":"1:30","Asr":"5:31","Asr Iqamah":"6:00","Maghrib":"7:27","Ishaa":"8:50","Ishaa Iqamah":"9:15"},
+"September02":{"Islamicday":"Dhul Qada 28","Islamicyear":1437,"Sept":2,"Day":"Fri","Fajr":"4:35","Fajr Iqamah":"5:30","Sunrise":"6:14","Zuhr":"12:55","Zuhr Iqamah":"1:30","Asr":"5:30","Asr Iqamah":"6:00","Maghrib":"7:25","Ishaa":"8:48","Ishaa Iqamah":"9:15"}
+};
+		var dataAll = body;
+			//console.log(dataAll);
+			var dataSet = dataAll[today];
+		//console.log(dataAll);
+		//console.log(dataSet["Fajr Iqamah"]);
+
+		var fajr = dataSet.Fajr+' AM';
+		var fajrIqamah = dataSet["Fajr Iqamah"]+" AM";
+		var sunrise = dataSet.Sunrise+" AM";
+		var zuhr = dataSet.Zuhr+" AM";
+		var zuhrIqamah = dataSet["Zuhr Iqamah"]+" PM";
+		var asr = dataSet.Asr+" PM";
+		var asrIqamah = dataSet["Asr Iqamah"]+" PM";
+		var magrib = dataSet.Maghrib+" PM";
+		var isha = dataSet.Ishaa+" PM";
+		var ishaIqamah = dataSet["Ishaa Iqamah"]+" PM";
+    var table = document.getElementById("myTable");
+    var row = table.insertRow();
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+
+	var row = table.insertRow();
+	var cell3 = row.insertCell(0);
+    var cell4 = row.insertCell(1);
+
+	var row = table.insertRow();
+	var cell5 = row.insertCell(0);
+    var cell6 = row.insertCell(1);
+
+	var row = table.insertRow();
+	var cell7 = row.insertCell(0);
+    var cell8 = row.insertCell(1);
+
+	var row = table.insertRow();
+	var cell9 = row.insertCell(0);
+    var cell10 = row.insertCell(1);
+
+	var row = table.insertRow();
+	var cell11 = row.insertCell(0);
+    var cell12 = row.insertCell(1);
+
+	var row = table.insertRow();
+	var cell13 = row.insertCell(0);
+    var cell14 = row.insertCell(1);
+
+	var row = table.insertRow();
+	var cell15 = row.insertCell(0);
+    var cell16 = row.insertCell(1);
+
+	//var row = table.insertRow();
+	//var cell15 = row.insertCell(0);
+    //var cell16 = row.insertCell(1);
+
+	//var row = table.insertRow();
+	//var cell16 = row.insertCell(0);
+    //var cell12 = row.insertCell(1);
+
+    cell1.innerHTML = "FAJR";
+    cell2.innerHTML = fajrIqamah;
+	cell3.innerHTML = "SUNRISE";
+    cell4.innerHTML = sunrise;
+	cell5.innerHTML = "ZUHR";
+    cell6.innerHTML = zuhrIqamah;
+	cell7.innerHTML = "ASR";
+    cell8.innerHTML = asrIqamah;
+	cell9.innerHTML = "Magrib";
+    cell10.innerHTML = magrib;
+	cell11.innerHTML = "ISHA";
+    cell12.innerHTML = ishaIqamah;
+
+	cell13.innerHTML = "JUMMAH 1";
+    cell14.innerHTML = "10:30 PM";
+	cell15.innerHTML = "JUMMAH 2";
+    cell16.innerHTML = "3:15 PM";
+
+}
+</script>
+</div>
+
+<div class="col-sm-9 col-lg-9">
+<div style="width:1425px;height:830px;overflow:hidden;">
+	<iframe src="https://docs.google.com/presentation/d/1P753GWIUVFkrwesO8VrS2hr25ZvJjNVt5UtYorey_Ds/embed?start=true&loop=true&delayms=30000" frameborder="0" width="1425" height="830" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+
+</div>
+</div>
+</div>
+
+
+<div  id="footer" style="color:white;font-weight:bold;background-color:#339966">
+
+<center>
+<div style="font-size: 5em">
+<time id="row1" style="" ></time><br>
+</div>
+<div style="font-size: 3.5em">
+<time id="row2" style="" ></time><br>
+</div>
+<!--div style="height:45px;width:900px;overflow:hidden">
+
+<iframe id='ifram' src="https://docs.google.com/spreadsheets/d/1UyltJcPTfWcNTGVaZXRXUky6tlYXCEYiuiBn0cNC1A0/pubhtml?gid=0&amp;range=A1&amp;single=true&amp;widget=false&amp;chrome=false&amp;headers=false" seamless="seamless" scrolling="no"></iframe></br></br>
+
+</div-->
+</center>
+<!--time id="row3" style="" ></time><br-->
+</div>
+
+
+<script type="text/javascript">myFunction();</script>
+<script type="text/javascript">updateClock();</script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

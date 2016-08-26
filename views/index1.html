@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+	<title>MAKKI MASJID SIGNAGE</title>
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="sticky-footer.css" rel="stylesheet">
+
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+	<script type="text/javascript">;
+function updateClock() {
+
+var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+var now = new Date();
+var day = now.getDay();
+var date = now.getDate();
+var month = now.getMonth();
+var year = now.getFullYear();
+var hour = now.getHours();
+var minute = now.getMinutes();
+var second = now.getSeconds();
+var AMorPM = "AM";
+
+if(hour>=12) AMorPM = "PM";
+if(hour>12) hour -= 12;
+
+if(date<10) date = "0" + date;
+if(hour<10) hour =  hour;
+if(minute<10) minute = "0" + minute;
+if(second<10) second = "0" + second;
+
+var firstRow = "&nbsp;" + hour + "&nbsp;" + ":" + "&nbsp;" + minute + "&nbsp;" + ":" + "&nbsp;" + second + "&nbsp;" + AMorPM + '';
+document.getElementById("row1").innerHTML = firstRow;
+//var secondRow = "&nbsp;"+days[day] + "," + "&nbsp;" + months[month] + "&nbsp;" + date+ "&nbsp;" + year + ''+ "&nbsp;&nbsp;-";
+//document.getElementById("row2").innerHTML = secondRow;
+
+setTimeout("updateClock()",1000);
+}
+</script>
+	<style>
+#header {
+
+}
+#body {
+    background-color:#99ff66
+    color:black;
+    text-align:center;
+    padding:0px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:100px;
+    padding:5px;
+}
+#clock {
+    width:70%;
+
+	float:center;
+    padding:0px;
+}
+#prayerTime {
+    width:relative;
+	float:left;
+	clear:both;
+    padding:0px;
+}
+#section {
+    width:absolute;
+    float:right;
+    padding:0px;
+}
+#footer {
+    background-color:green;
+    color:white;
+    clear:both;
+    text-align:center;
+   padding:5px;
+}
+#ifram {
+ overflow:hidden;
+ overflow-x:hidden;
+ overflow-y:hidden;
+ width:800px;
+ height:70px;
+}
+#canvas {
+		    width: 100%;
+		    height: auto;
+		}
+</style>
+
+
+  </head>
+
+
+
+  <body background="bg1.jpg">
+  <div class="container-fluid">
+  <!---div id="header">
+		<img src="header.jpg" alt="header" width="100%" height="100px">
+	</div--->
+
+
+	<div class="col-sm-4 col-lg-4" style="">
+	<div>
+	<center>
+	<div id="clock">
+
+	<canvas id="canvas" width="375em" height="375em"
+	style="background-color:bg1.jpg">
+	</canvas>
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.width / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawLogo(ctx);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+
+}
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#669999');
+  grad.addColorStop(0.2, '#E6AA91');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(0.7, '#c68c53');
+  grad.addColorStop(1, '#1a1aff');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#206020';
+
+  ctx.fill();
+
+   grad.addColorStop(1, '#00b386');
+
+  //ctx.drawImage("globe39.png",10,40,20,20);
+
+}
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  var grad;
+
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#00994d');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#00b386');
+
+  ctx.font = "bold "+radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  ctx.fillStyle=grad;
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+
+}
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+  ctx.strokeStyle = '#004d00';
+
+
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+	ctx.strokeStyle = '#ff0000';
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+
+function drawLogo(ctx) {
+ctx.font="bold 20px Aerial";
+ctx.fillStyle = "#00994d";
+ctx.textAlign = "center";
+ctx.fillText("MAKKI MASJID", 5, 40);
+
+ base_image = new Image();
+  base_image.src = 'darussalam_logo.gif';
+ // base_image.onload = function(){
+    ctx.drawImage(base_image, -60,-140,120,120);
+
+//ctx.drawImage("globe39.png",10,40,20,20);
+}
+
+</script>
+
+<div style="font-size: 2.75em;color:red;font-weight:bold">
+<time id="row1" style="" ></time><br>
+</div>
+
+</div>
+</center>
+
+	<div class="table-responsive" style="float:center;padding:0px;font-size: 1.50em;width:100%;border:5px solid black;">
+<style>
+table, td, th {
+
+}
+
+th {
+    background-color: green;
+    color: white;
+    align:center;
+
+}
+</style>
+	<table class="table">
+    <thead >
+    </thead>
+    <tbody style="padding:0px">
+      <tr bgcolor="#00FF00">
+        <td>SALAH</td>
+        <td>START</td>
+        <td>IQAMAH</td>
+      </tr>
+	  <tr bgcolor="white">
+        <td>FAJR</td>
+        <td>5:19 AM</td>
+        <td>6:15 AM</td>
+      </tr>
+	  <tr bgcolor="white">
+        <td>Sunrise</td>
+        <td>7:01 AM</td>
+        <td></td>
+      </tr>
+	   <tr bgcolor="white">
+        <td>ZUHR</td>
+        <td>11:45 AM</td>
+        <td>1:00 PM</td>
+      </tr>
+	   <tr bgcolor="white">
+        <td>ASR</td>
+        <td>2:39 PM</td>
+        <td>3:15 PM</td>
+      </tr>
+	   <tr bgcolor="white">
+        <td>MAGHRIB</td>
+        <td>4:20 PM</td>
+        <td>4:20 PM</td>
+      </tr bgcolor="white">
+	   <tr bgcolor="white">
+        <td>ISHA</td>
+        <td>5:43 PM</td>
+        <td>7:30 PM</td>
+      </tr>
+	   <tr>
+        <td>JUMMAH</td>
+        <td>12:30 PM</td>
+        <td>1:00 PM</td>
+      </tr>
+	  <!--tr>
+        <td></td>
+        <td>Lecture</td>
+        <td>Khutbah</td>
+      </tr-->
+    </tbody>
+  </table>
+  </div>
+  </div>
+</div>
+
+
+
+<div class="col-sm-8 col-lg-8" style="float:right;padding:0px;">
+
+<!--img src="header.jpg" alt="header" width="100%" height="90px"-->
+<div style="float:center;align:center;padding:5px;padding-top:0px;align:center;">
+<center>
+<p style="font-size: 2.25em">As-salamu Alaikum <br></p>
+<p style="font-size: 4em">Welcome To Makki Masjid<br></p>
+
+<!--div class="col-sm-7 col-lg-7">
+<div style="font-size: 35px;overflow:hidden">
+<time id="row2" style="" ></time>
+</div>
+</div-->
+
+<div style="height:35px;width:550px;overflow:hidden">
+
+<iframe id='ifram' src="https://docs.google.com/spreadsheets/d/1UyltJcPTfWcNTGVaZXRXUky6tlYXCEYiuiBn0cNC1A0/pubhtml?gid=0&amp;range=A1&amp;single=true&amp;widget=false&amp;chrome=false&amp;headers=false" seamless="seamless" scrolling="no"></iframe></br></br>
+
+</div>
+
+
+</center>
+<script type="text/javascript">updateClock();</script>
+</div>
+<div style="width:1060px;height:597px;overflow:hidden;">
+	<iframe src="https://docs.google.com/presentation/d/1P753GWIUVFkrwesO8VrS2hr25ZvJjNVt5UtYorey_Ds/embed?start=true&loop=true&delayms=30000" frameborder="0" width="1060" height="625" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+
+</div>
+</div>
+
+
+
+
+
+	<!--footer class="footer">
+      <div class="container-fluid">
+
+
+<div class="col-sm-4" style="">
+<div style="padding:0x;padding-top:10px;font-size: 1.7em;align:center;">
+
+JUMMAH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+12:30&nbsp;PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:00&nbsp;PM <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lecture
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Khutbah <br>
+<!--table class="table">
+
+    <tbody style="padding:0px">
+      <tr bgcolor="white">
+        <td>JUMMAH</td>
+        <td>12:30 PM</td>
+        <td>01:00 PM</td>
+      </tr>
+	  <tr bgcolor="white">
+        <td></td>
+        <td>Lecture</td>
+        <td>Khutbah</td>
+      </tr>
+	 </tbody>
+</table-->
+<!--/div>
+</div>
+
+
+<div class="col-sm-4" style="">
+<div style="float:center;align:center;padding:5px;padding-top:0px;font-size: 4.5em;align:center;">
+<center>
+<time id="row1" style="" ></time></br>
+
+</center>
+
+
+<script type="text/javascript">updateClock();</script>
+</div>
+</div>
+
+
+
+<div class="col-sm-4" style="float:right;;padding:0px;padding-top:0px;font-size: 1.25em;align:center;">
+
+<img src="globe39.png"> www.MakkiMasjid.com  <br>
+<img src="envelope139.png"> MakkiMasjid@yahoo.com <br>
+3418 W. Ainslie Street, Chicago, Illinois 60625
+
+</div>
+
+
+    </footer-->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+	<div>
+  </body>
+</html>
