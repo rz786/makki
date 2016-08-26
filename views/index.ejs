@@ -42,9 +42,11 @@ if(hour==0) hour = 12;
 if(minute<10) minute = "0" + minute;
 if(second<10) second = "0" + second;
 
+var hijriDate =<%-JSON.stringify(hijri)%>;
+
 var firstRow = "&nbsp;" + hour + "&nbsp;" + ":" + "&nbsp;" + minute + "&nbsp;" + ":" + "&nbsp;" + second + "&nbsp;" + AMorPM + '';
 document.getElementById("row1").innerHTML = firstRow;
-var secondRow = "&nbsp;"+days[day] +"&nbsp;"+months[month] + "&nbsp;" + date+ "&nbsp;" + year+"&nbsp;&nbsp;-&nbsp;&nbsp;Dhul Qada 22 1437";
+var secondRow = "&nbsp;"+days[day] +"&nbsp;"+months[month] + "&nbsp;" + date+ "&nbsp;" + year+"&nbsp;&nbsp;-&nbsp;&nbsp;"+hijriDate;
 document.getElementById("row2").innerHTML = secondRow;
 //var thirdRow = "&nbsp;"+months[month] + "&nbsp;" + date+ "&nbsp;" + year;
 //document.getElementById("row3").innerHTML = thirdRow;
@@ -115,6 +117,8 @@ height:100px;
   </center>
   </div>
 
+
+
 </div class="container-fluid">
 <div class="col-sm-3 col-lg-3">
   <div class="table-responsive" style="float:center;padding:0px;width:100%;height:830px;">
@@ -130,7 +134,7 @@ height:100px;
 </div>
   <script type="text/javascript">
 function myFunction() {
-
+console.log(<%-JSON.stringify(hijri)%>)
   //var x = JSON.parse($('#myJson'));
         //console.log(myJson); //Foo
 
